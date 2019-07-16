@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-
+ul {
+  list-style-type: none;
+}
+ul li {
+  display: inline-block;
+}
+#mapid { height: 180px; }
 
 @keyframes App-logo-spin {
   from {
