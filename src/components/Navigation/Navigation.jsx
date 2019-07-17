@@ -38,9 +38,5 @@ export const Navigation = () => (
         </div>
       </div>
     </div>
-
-    {/* <div className="wrapper">
-      <div style={{ height: '2000px' }} />
-</div> */}
   </>
 );

@@ -10756,6 +10756,11 @@ worker-rpc@^0.1.0:
   dependencies:
     microevent.ts "~0.1.1"
 
+world-map-geojson@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/world-map-geojson/-/world-map-geojson-1.0.2.tgz#423f259844ab0436b76764b887dfd10e2408e842"
+  integrity sha512-572d08vsRLPVLNIn8HRS6SLTM13N2/s2+PDYOJTb6fkiiS+/IeAaXq1yC0h0FLHqottKl1I/yqNZH4vcupsbqw==
+
 wrap-ansi@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-2.1.0.tgz#d8fc3d284dd05794fe84973caecdd1cf824fdd85"
