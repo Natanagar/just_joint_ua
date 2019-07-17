@@ -1,4 +1,7 @@
 import React from 'react';
+import logo from './logo.png';
+
+console.log(logo);
 
 export const Navigation = () => (
   <React.Fragment>
@@ -6,7 +9,7 @@ export const Navigation = () => (
       <div className="navbar">
         <div className="logo">
           <picture>
-            <img src="http://fillmurray.com/50/50" alt="logo" />
+            <img src={logo} style={{ width: '200px' }} alt="logo" />
           </picture>
         </div>
         <div className="menu">
