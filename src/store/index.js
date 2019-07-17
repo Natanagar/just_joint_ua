@@ -14,7 +14,7 @@ export const persistConfig = {
 };
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const { createReduxHistory, routerMiddleware, rootReducer } = createReduxHistoryContext({
+const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
   // others options if needed
 });
