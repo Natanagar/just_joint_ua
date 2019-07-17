@@ -8,7 +8,7 @@ export const MapLeaflet = () => {
   const position = [51.505, -0.09];
   return (
     <LeafletMap
-      center={[50, 10]}
+      center={[49.98081, 36.25272]}
       zoom={13}
       maxZoom={10}
       attributionControl
@@ -22,10 +22,10 @@ export const MapLeaflet = () => {
       <GeoJSON
         data={worldGeoJSON}
         style={() => ({
-          color: '#4a83ec',
-          weight: 0.5,
-          fillColor: '#1a1d62',
-          fillOpacity: 1,
+          color: '#b8cdf5',
+          weight: 0.2,
+          fillColor: '#5d5f91',
+          fillOpacity: 0.15,
         })}
       />
       <TileLayer
