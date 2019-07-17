@@ -9,6 +9,64 @@ ul li {
   display: inline-block;
 }
 #mapid { height: 180px; }
+/* Clear formatting*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Remove formatting from links*/
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Set a max width to the content*/
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #c2c2d6;
+  display: flex;
+  flex-direction: column;
+  /*height: 100vh;  */
+}
+.parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e0e0eb;
+  /*   */
+}
+.logo {
+  padding: 20px;
+}
+.menu {
+  display: flex;
+  align-items: center;
+}
+.menu ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  background-color:#c2c2d6;
+}
+.menu li {
+  padding: 10px;
+  margin-left: 20px;
+  background-color: #7575a3;
+  /*color: rgba(255, 0, 0, 0.9);*/
+  font-size: 10px;
+  font-weight: bold;
+}
 
 @keyframes App-logo-spin {
   from {
