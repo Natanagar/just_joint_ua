@@ -1,10 +1,9 @@
 import React from 'react';
 import logo from './logo.png';
 
-console.log(logo);
 
 export const Navigation = () => (
-  <React.Fragment>
+  <>
     <div className="parent">
       <div className="navbar">
         <div className="logo">
@@ -40,8 +39,8 @@ export const Navigation = () => (
       </div>
     </div>
 
-    <div className="wrapper">
+    {/* <div className="wrapper">
       <div style={{ height: '2000px' }} />
-    </div>
-  </React.Fragment>
+</div> */}
+  </>
 );

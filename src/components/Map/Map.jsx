@@ -1,25 +1,31 @@
 import React from 'react';
 import {
- Map, TileLayer, Marker, Popup 
+  Map as LeafletMap, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 
 export const MapLeaflet = () => {
   const position = [51.505, -0.09];
   return (
-      <div id="mapid">
-          <Map center={position} zoom={13}>
+    <LeafletMap
+      center={[50, 10]}
+      zoom={6}
+      maxZoom={10}
+      attributionControl
+      zoomControl
+      doubleClickZoom
+      scrollWheelZoom
+      dragging
+      animate
+      easeLinearity={0.35}
+    >
       <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position}>
-        <Popup>
-            A pretty CSS3 popup
-          <br />
-            Easily customizable.
-        </Popup>
-      </Marker>
-    </Map>
-        </div>
+          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        />
+      <Marker position={[50, 10]}>
+          <Popup>
+            Popup for any custom information.
+          </Popup>
+        </Marker>
+    </LeafletMap>
   );
 };

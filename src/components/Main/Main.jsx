@@ -1,6 +1,10 @@
 import React from 'react';
+import { MapLeaflet } from '../Map/Map';
 
 export const Main = () => (
-  <div>Content</div>
-);
+  <div className="wrapper">
+   Content
 
+    <MapLeaflet />
+  </div>
+);
