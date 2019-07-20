@@ -8,7 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createReduxHistoryContext, reachify } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 import rootReducer from '../reducers/MapReducer';
-import { MapSaga } from '../redux-sagas/MapSaga';
+import rootSaga from '../redux-sagas/MapSaga';
 
 export const persistConfig = {
   key: 'root',
@@ -16,8 +16,6 @@ export const persistConfig = {
 };
 // persist reducer
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
-// createMiddleware with redux-saga
-const sagaMiddleware = createSagaMiddleware();
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
@@ -33,9 +31,7 @@ const configureStore = () => {
   };
 };
 const store = configureStore();
-store.runSaga(MapSaga);
-
-// const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(routerMiddleware, thunk, logger)));
+store.runSaga(rootSaga);
 
 export const history = createReduxHistory(store);
 // if you use @reach/router
