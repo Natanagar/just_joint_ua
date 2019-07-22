@@ -5,14 +5,19 @@ import {
   MAP_LOAD_SAGA_START,
   MAP_LOAD_SAGA_SUCCESS,
   MAP_LOAD_SAGA_ERROR,
+  MAP_PUT_CUSTOM_COORDINATES,
 } from '../actions/index';
+import { Position } from '../components/utils/index';
+
 
 const initialState = Object.freeze({
   marker: null,
-  map: null,
+  map: {},
   isLoading: false,
   error: null,
+  coordinates: [Position.lat, Position.lng],
 });
+
 
 const MapReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -37,6 +42,11 @@ const MapReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.error,
+      };
+    case MAP_PUT_CUSTOM_COORDINATES:
+      return {
+        ...state,
+        coordinates: action.coordinates,
       };
 
     default:

@@ -10,7 +10,7 @@ export const MapLeaflet = () => {
     <LeafletMap
       center={[49.98081, 36.25272]}
       zoom={13}
-      maxZoom={10}
+      maxZoom={20}
       attributionControl
       zoomControl
       doubleClickZoom
