@@ -34,7 +34,7 @@ export const mapParams = {
   center: [Position.lat, Position.lng], // нужно взять из сторы
   zoomControl: false,
   maxBounds: bounds,
-  zoom: 9,
+  zoom: 2,
   layers: [markersLayer, isochronesLayer],
 };
 // geolocation
@@ -51,8 +51,8 @@ map.on('locationfound', onLocationFound); */
 
 function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet
-  console.log('Start');
   const map = new L.map('map', mapParams);
+
   L.control.scale().addTo(map);
   // map.invalidateSize();
 
@@ -93,7 +93,6 @@ function* MapSaga() {
     });
   }
 }
-
 
 /*
   let userLocation = {};

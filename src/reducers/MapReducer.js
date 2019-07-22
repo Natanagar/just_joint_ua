@@ -35,7 +35,7 @@ const MapReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        map: action.map,
+        map: action.payload,
       };
     case MAP_LOAD_SAGA_ERROR:
       return {

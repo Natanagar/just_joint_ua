@@ -12,7 +12,7 @@ export const mapStartLoading = isLoading => ({
 });
 export const mapIsLoaded = map => ({
   type: 'MAP_LOAD_SAGA_SUCCESS',
-  payload: map,
+  map,
 });
 export const errorLoadingMap = error => ({
   type: 'MAP_LOAD_SAGA_ERROR',
