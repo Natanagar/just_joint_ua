@@ -53,7 +53,9 @@ function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet
   console.log('Start');
   const map = new L.map('map', mapParams);
-  map.invalidateSize();
+  L.control.scale().addTo(map);
+  // map.invalidateSize();
+
   // L.tileLayer('http://{s}.somedomain.com/{foo}/{z}/{x}/{y}.png', { foo: 'bar' }).addTo(map);
 
   // we create a leaflet pane which will hold all isochrone polygons with a given opacity

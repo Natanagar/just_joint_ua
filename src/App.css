@@ -9,7 +9,7 @@
 }
 /* leaflet container*/
 .leaflet-container {
-  height: 400px;
+  height: 900px;
   width: 800px;
   margin: 100px auto;
 }
@@ -78,10 +78,10 @@ a {
   font-weight: bold;
 }
 #map {
-  position: fixed;
+  /*position: relative;*/
   margin-top: 100px;
   width: 100%;
-  max-height: 50%;
+  height: 280px;
 }
 
 @keyframes App-logo-spin {
