@@ -10,6 +10,8 @@ import {
   mapIsLoaded,
   errorLoadingMap,
   putCustomCoordinates,
+  mapCreateMarkerSaga,
+  mapRemoveMarkerSaga,
 } from '../actions';
 
 
@@ -37,26 +39,26 @@ export const mapParams = {
   zoom: 2,
   layers: [markersLayer, isochronesLayer],
 };
-// geolocation
-/* function onLocationFound(e) {
-  const radius = e.accuracy;
 
-  L.marker(e.latlng).addTo(map)
-    .bindPopup(`You are within ${  radius  } meters from this point`).openPopup();
-
-  L.circle(e.latlng, radius).addTo(map);
-}
-
-map.on('locationfound', onLocationFound); */
 
 function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet
   const map = new L.map('map', mapParams);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  // geolocation
+  const onLocationFound = (e) => {
+    const radius = e.accuracy;
+
+    L.marker(e.latlng).addTo(map)
+      .bindPopup(`You are within ${radius} meters from this point`).openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+  };
+  map.on('locationfound', onLocationFound);
 
   L.control.scale().addTo(map);
-  // map.invalidateSize();
-
-  // L.tileLayer('http://{s}.somedomain.com/{foo}/{z}/{x}/{y}.png', { foo: 'bar' }).addTo(map);
 
   // we create a leaflet pane which will hold all isochrone polygons with a given opacity
   const isochronesPane = map.createPane('isochronesPane');
@@ -74,17 +76,17 @@ function* MapSaga() {
       position: 'topright',
     })
     .addTo(map);
-
+  const marker = new L.marker([Position.lat, Position.lng]).addTo(map)
+    .bindPopup('Цей маркер <br> може бути кастомiзований.')
+    .openPopup();
   // and for the sake of advertising your company, you may add a logo to the map
-  const brand = L.control({
-    position: 'bottomright',
-  });
   yield delay(500);
   try {
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
       payload: map,
     });
+    yield put(mapCreateMarkerSaga(marker));
     return map;
   } catch (error) {
     yield put({

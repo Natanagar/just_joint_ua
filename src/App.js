@@ -9,7 +9,9 @@ import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
 import './App.css';
 
-const App = ({ mapStart, dispatch }) => {
+const App = ({
+  mapStart, dispatch, marker, map,
+}) => {
   useEffect(() => dispatch(mapStart), []);
   return (
     <div className="App">
@@ -23,9 +25,14 @@ const App = ({ mapStart, dispatch }) => {
   );
 };
 
-const mapStateToProps = () => ({
+const mapStateToProps = ({ MapReducer }) => {
+  const { marker, map } = MapReducer;
+  return {
+    marker,
+    map,
+  };
+};
 
-});
 const mapDispatchToProps = dispatch => ({
   mapStart: () => dispatch(mapStartLoading()),
   dispatch,
