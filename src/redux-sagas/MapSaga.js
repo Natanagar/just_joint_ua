@@ -42,7 +42,7 @@ export const mapParams = {
 
 
 function* MapSaga() {
-  yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet
+  yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet need to add
   const map = new L.map('map', mapParams);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -82,6 +82,7 @@ function* MapSaga() {
   // and for the sake of advertising your company, you may add a logo to the map
   yield delay(500);
   try {
+    console.log(map);
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
       payload: map,
