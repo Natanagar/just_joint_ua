@@ -43,11 +43,13 @@ export const mapParams = {
 
 function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet need to add
+  yield delay(3000);
   const map = new L.map('map', mapParams);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
   // geolocation
+  yield delay(3000);
   const onLocationFound = (e) => {
     const radius = e.accuracy;
 
@@ -79,8 +81,8 @@ function* MapSaga() {
   const marker = new L.marker([Position.lat, Position.lng]).addTo(map)
     .bindPopup('Цей маркер <br> може бути кастомiзований.')
     .openPopup();
-  // and for the sake of advertising your company, you may add a logo to the map
-  yield delay(500);
+    // and for the sake of advertising your company, you may add a logo to the map
+  yield delay(3000);
   try {
     console.log(map);
     yield put({
@@ -98,14 +100,14 @@ function* MapSaga() {
 }
 
 /*
-  let userLocation = {};
-  const userCoords = yield getPreciseLocation().then(value => (userLocation = { lat: value[0], lng: value[1] }));
-  yield put(setUserCoords(userCoords));
-  yield delay(3000);
-  const venues = yield getVenueCoords(userCoords);
-  yield put(setVenueCoords(venues));
-  yield put(initMapComplete());
-} */
+    let userLocation = {};
+    const userCoords = yield getPreciseLocation().then(value => (userLocation = { lat: value[0], lng: value[1] }));
+    yield put(setUserCoords(userCoords));
+    yield delay(3000);
+    const venues = yield getVenueCoords(userCoords);
+    yield put(setVenueCoords(venues));
+    yield put(initMapComplete());
+  } */
 
 function* watchInitMap() {
   yield takeEvery('INIT_MAP', MapSaga);

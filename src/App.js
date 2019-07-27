@@ -7,15 +7,20 @@ import { Employer } from './components/Employer/Employer';
 import { Employee } from './components/Employee/Employee';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
+import Map from './components/Map/Map';
 import './App.css';
 
 const App = ({
   mapStart, dispatch, marker, map,
 }) => {
-  useEffect(() => dispatch(mapStart), []);
+  useEffect(() => dispatch(mapStart), [dispatch, mapStart]);
   return (
     <div className="App">
+
+
       <Navigation />
+      <div id="map" />
+
       <Router>
         <Employer path="company" />
         <Employee path="hiring" />

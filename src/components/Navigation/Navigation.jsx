@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 import logo from './logo.png';
 
 
@@ -28,9 +29,12 @@ export const Navigation = () => (
             <li>
               <a href="#about">About us</a>
             </li>
-            <li>
-              <a href="#post">Post a job</a>
-            </li>
+            <Link to="/company">
+              <li>
+                <a href="#post">Post a job</a>
+                            </li>
+
+            </Link>
             <li>
               <a href="#registration">Registration</a>
             </li>

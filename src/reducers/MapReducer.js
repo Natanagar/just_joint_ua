@@ -92,6 +92,6 @@ const MapReducer = (state = initialState, action) => {
 const rootReducer = combineReducers({
   MapReducer,
   // form reducer
-  // form: formReducer,
+  form: formReducer,
 });
 export default rootReducer;
