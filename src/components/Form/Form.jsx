@@ -26,8 +26,10 @@ const FormForJobs = (props) => {
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
-export default FormForJobs;
+export default reduxForm({
+  form: 'formForEmployer',
+})(FormForJobs);

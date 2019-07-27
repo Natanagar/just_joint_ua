@@ -3,7 +3,7 @@ import FormForJobs from '../Form/Form';
 
 export const Employer = () => (
   <div>
-All for company
+    All for company
     <FormForJobs />
 
   </div>

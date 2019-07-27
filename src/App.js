@@ -7,7 +7,6 @@ import { Employer } from './components/Employer/Employer';
 import { Employee } from './components/Employee/Employee';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
-import Map from './components/Map/Map';
 import './App.css';
 
 const App = ({
