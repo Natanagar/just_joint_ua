@@ -5,6 +5,7 @@ import {
 } from 'redux-saga/effects';
 import { Position, Apikey } from '../components/utils/index';
 import HereTileLayers from '../components/Map/hereTileLayers';
+import Logo from '../components/Map/images/javascript.svg';
 import {
   mapStartLoading,
   mapIsLoaded,
@@ -39,11 +40,18 @@ export const mapParams = {
   zoom: 2,
   layers: [markersLayer, isochronesLayer],
 };
-
+console.log(Logo);
 
 function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet need to add
   yield delay(3000);
+  delete L.Icon.Default.prototype._getIconUrl;
+
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  });
   const map = new L.map('map', mapParams);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -52,8 +60,18 @@ function* MapSaga() {
   yield delay(3000);
   const onLocationFound = (e) => {
     const radius = e.accuracy;
+    // custom icons
+    const myIcon = L.icon({
+      iconUrl: '/static/media/javascript.d8c3b7fd.svg',
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowUrl: Logo,
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94],
+    });
 
-    L.marker(e.latlng).addTo(map)
+    L.marker((e.latlng), { icon: myIcon }).addTo(map)
       .bindPopup(`You are within ${radius} meters from this point`).openPopup();
 
     L.circle(e.latlng, radius).addTo(map);
@@ -82,9 +100,8 @@ function* MapSaga() {
     .bindPopup('Цей маркер <br> може бути кастомiзований.')
     .openPopup();
     // and for the sake of advertising your company, you may add a logo to the map
-  yield delay(3000);
+  // yield delay(3000);
   try {
-    console.log(map);
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
       payload: map,

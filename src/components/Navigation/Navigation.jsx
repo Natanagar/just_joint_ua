@@ -31,8 +31,8 @@ export const Navigation = () => (
             </li>
             <Link to="/company">
               <li>
-                <a href="#post">Post a job</a>
-                            </li>
+                <span>Post a job</span>
+              </li>
 
             </Link>
             <li>
