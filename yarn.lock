@@ -4202,9 +4202,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.122, electron-to-chromium@^1.3.191:
-  version "1.3.201"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.201.tgz#b516e941baf01a7cf8abd33af537a39e1e0096db"
-  integrity sha512-aCTPIfY1Jvuam5b6vuWRjt1F8i4kY7zX0Qtpu5SNd6l1zjuxU9fDNpbM4o6+oJsra+TMD2o7D20GnkSIgpTr9w==
+  version "1.3.202"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.202.tgz#5412680d56347601ec7dc291d51bddd14b8fbd45"
+  integrity sha512-oJHvNNYM3Y9mJfiujbFQxRa0v7mzrc6Pv76fq6A4Dd6MxbfiVGhmgXtIeMBloTF8crmlJ1rXQW95VS4Zp/9ZSg==
 
 elliptic@^6.0.0:
   version "6.5.0"
@@ -7262,10 +7262,10 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-jsog@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/jsog/-/jsog-1.0.7.tgz#b99f7331674807a7aecb3eb16f8aefbded27fb22"
-  integrity sha1-uZ9zMWdIB6euyz6xb4rvve0n+yI=
+jsoff@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jsoff/-/jsoff-1.1.0.tgz#87abc7a4bb39eec9b1b1a5adb911d1707809128e"
+  integrity sha1-h6vHpLs57smxsaWtuRHRcHgJEo4=
 
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
@@ -8253,9 +8253,9 @@ natural-compare@^1.4.0:
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
 nearley@^2.7.10:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.16.0.tgz#77c297d041941d268290ec84b739d0ee297e83a7"
-  integrity sha512-Tr9XD3Vt/EujXbZBv6UAHYoLUSMQAxSsTnm9K3koXzjzNWY195NqALeyrzLZBKzAkL3gl92BcSogqrHjD8QuUg==
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.17.0.tgz#61d2f933c37d72671336d8f934ee1f82bceba86d"
+  integrity sha512-duA4zGPF0EC93e0UNqCowBiZg6wnBKUazA1YSYoyJDKx24dPqNITBZb3dp/e92wTdyeGKe+ng1iOTWn69FiGEQ==
   dependencies:
     commander "^2.19.0"
     moo "^0.4.3"

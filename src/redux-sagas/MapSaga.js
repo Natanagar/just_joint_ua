@@ -37,10 +37,10 @@ export const mapParams = {
   center: [Position.lat, Position.lng], // нужно взять из сторы
   zoomControl: false,
   maxBounds: bounds,
-  zoom: 2,
+  zoom: 9,
   layers: [markersLayer, isochronesLayer],
 };
-console.log(Logo);
+
 
 function* MapSaga() {
   yield put({ type: 'MAP_PUT_CUSTOM_COORDINATES' }); // geolocation from leaflet need to add
@@ -74,7 +74,7 @@ function* MapSaga() {
     L.marker((e.latlng), { icon: myIcon }).addTo(map)
       .bindPopup(`You are within ${radius} meters from this point`).openPopup();
 
-    L.circle(e.latlng, radius).addTo(map);
+    // L.circle(e.latlng, radius).addTo(map);
   };
   map.on('locationfound', onLocationFound);
 
@@ -101,12 +101,26 @@ function* MapSaga() {
     .openPopup();
     // and for the sake of advertising your company, you may add a logo to the map
   // yield delay(3000);
+  const getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) {
+          return;
+        }
+        seen.add(value);
+      }
+      return value;
+    };
+  };
   try {
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
-      payload: map,
+      payload: JSON.stringify(map, getCircularReplacer()),
     });
-    yield put(mapCreateMarkerSaga(marker));
+
+
+    yield put(mapCreateMarkerSaga(JSON.stringify(marker, getCircularReplacer())));
     return map;
   } catch (error) {
     yield put({

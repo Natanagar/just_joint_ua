@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer, createTransform } from 'redux-persist';
-import JSOG from 'jsog';
+import JSOFF from 'jsoff';
+// import JSOG from 'jsog';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -11,16 +12,21 @@ import { createBrowserHistory } from 'history';
 import rootReducer from '../reducers/MapReducer';
 import rootSaga from '../redux-sagas/MapSaga';
 
-export const JSOGTransform = createTransform(
+/*const myTransform = createTransform(
+  // transform state on its way to being serialized and persisted.
+  (inboundState, key) => JSOFF.stringify(inboundState),
+  (outboundState, key) => JSOFF.parse(outboundState),
+); */
+/* export const JSOGTransform = createTransform(
 
   (inboundState, key) => JSOG.encode({ ...inboundState }),
   (outboundState, key) => JSOG.decode({ ...outboundState }),
-);
+); */
 
 export const persistConfig = {
   key: 'root',
   storage,
-  transforms: [JSOGTransform],
+  // transforms: [myTransform],
 };
 // persist reducer
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
