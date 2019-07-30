@@ -116,11 +116,11 @@ function* MapSaga() {
   try {
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
-      payload: JSON.stringify(map, getCircularReplacer()),
+      payload: map,
     });
 
 
-    yield put(mapCreateMarkerSaga(JSON.stringify(marker, getCircularReplacer())));
+    yield put(mapCreateMarkerSaga(marker));
     return map;
   } catch (error) {
     yield put({

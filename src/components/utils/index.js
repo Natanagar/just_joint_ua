@@ -1,3 +1,18 @@
+// fuction which we can serialize object
+export const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
+
+
 // data from geolocation
 
 export const Position = {
@@ -9,5 +24,4 @@ export const Position = {
 export const Apikey = {
   id: 'YfwmqoRcneAJFYW59N2x',
   code: '-93RIEiqz9M1RqyfJIlONQ',
-}
-;
+};
