@@ -21,6 +21,7 @@ const App = ({
       <div id="map" />
 
       <Router>
+        <Employee path="jobs" />
         <Employer path="company" />
         <Employee path="hiring" />
       </Router>

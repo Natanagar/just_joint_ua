@@ -14,9 +14,9 @@ export const Navigation = () => (
         </div>
         <div className="menu">
           <ul>
-            <li>
-              <a href="#jobs">Job offers</a>
-            </li>
+            <Link to="/jobs">
+              <li><span>Job offers</span></li>
+            </Link>
             <li>
               <a href="#stories">Brand stories</a>
             </li>
