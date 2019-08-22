@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import firebase from 'firebase/app';
+
 import { Provider } from 'react-redux';
+import Firebase, { FirebaseContext } from './components/Firebase/index';
 import store from './store/index';
 
 import './index.css';

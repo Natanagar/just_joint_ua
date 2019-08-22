@@ -1,3 +1,13 @@
+// key and others from Firebase
+export const firebaseData = {
+  apiKey: 'AIzaSyAjZYM8VG6ID_3C0OzmfLw_pCMkgAChXuQ',
+  authDomain: 'juniorsjobs-48edf.firebaseio.com',
+  databaseURL: 'https://juniorsjobs-48edf.firebaseio.com',
+  projectId: 'juniorsjobs-48edf',
+  storageBucket: 'juniorsjobs-48edf.appspot.com',
+  messageInSenderId: '1093321087128',
+};
+
 export const jobs = [
   {
     position: 'Junior frontend developer',

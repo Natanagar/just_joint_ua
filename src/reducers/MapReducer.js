@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { firestoreReducer } from 'redux-firestore';
 import {
   MAP_DRAGGBLE_MARKER,
   MAP_LOAD_SAGA_START,
@@ -93,5 +94,6 @@ const rootReducer = combineReducers({
   MapReducer,
   // form reducer
   form: formReducer,
+  firestore: firestoreReducer,
 });
 export default rootReducer;
