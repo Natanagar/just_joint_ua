@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import { reactReduxFirebase } from 'react-redux-firebase';
 import { persistStore, persistReducer, createTransform } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
@@ -24,23 +25,24 @@ const myTransform = createTransform(
 );
 
 const firestoreConfig = {
-  apiKey: 'AIzaSyAjZYM8VG6ID_3C0OzmfLw_pCMkgAChXuQ',
-  authDomain: 'juniorsjobs-48edf.firebaseapp.com',
-  databaseURL: 'https://juniorsjobs-48edf.firebaseio.com',
-  projectId: 'juniorsjobs-48edf',
-  storageBucket: 'juniorsjobs-48edf.appspot.com',
-  messagingSenderId: '1093321087128',
-  appId: '1:1093321087128:web:e9a36f484171818f',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 
 };
 console.log(firestoreConfig);
 
 
 // react-redux-firebase config
-const rrfConfig = {
+export const rrfConfig = {
   userProfile: '',
   jobsProfile: 'jobs_ukraine',
   useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  // dispatch: store.dispatch,
 };
 
 // Initialize firebase instance
@@ -71,8 +73,15 @@ const configureStore = () => {
   // Note: passing middleware as the last argument to createStore requires redux@>=3.1.0
   const sagaMiddleware = createSagaMiddleware();
   return {
-    ...createStoreWithFirebase(persistedReducer, composeWithDevTools(applyMiddleware(routerMiddleware, thunk, logger, sagaMiddleware))),
+    ...createStore(persistedReducer,
+      composeWithDevTools(
+        compose(
+          reactReduxFirebase(firebase, persistConfig),
+          applyMiddleware(routerMiddleware, thunk, logger, sagaMiddleware),
+        ),
+      )),
     runSaga: sagaMiddleware.run,
+
   };
 };
 const store = configureStore();

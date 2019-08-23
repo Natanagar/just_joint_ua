@@ -15,6 +15,7 @@ import { Position } from '../components/utils/index';
 
 const initialState = Object.freeze({
   marker: [],
+  jobs: [],
   map: {},
   isLoading: false,
   error: null,
