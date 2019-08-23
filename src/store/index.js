@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reduxFirestore, firestoreReducer } from 'redux-firestore';
-import { reactReduxFirebase } from 'react-redux-firebase';
-import { persistStore, persistReducer, createTransform } from 'redux-persist';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import {
+  persistStore, persistReducer, createTransform,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -73,7 +75,7 @@ const configureStore = () => {
   // Note: passing middleware as the last argument to createStore requires redux@>=3.1.0
   const sagaMiddleware = createSagaMiddleware();
   return {
-    ...createStore(persistedReducer,
+    ...createStoreWithFirebase(persistedReducer,
       composeWithDevTools(
         compose(
           reactReduxFirebase(firebase, persistConfig),

@@ -35,9 +35,11 @@ export const Navigation = () => (
               </li>
 
             </Link>
-            <li>
-              <a href="#registration">Registration</a>
-            </li>
+            <Link to="/google">
+              <li>
+                <a href="#registration">Registration</a>
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

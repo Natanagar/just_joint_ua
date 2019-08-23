@@ -5,6 +5,7 @@ import { Footer } from './components/Footer/Footer';
 import { Navigation } from './components/Navigation/Navigation';
 import { Employer } from './components/Employer/Employer';
 import { Employee } from './components/Employee/Employee';
+import LoginPage from './components/auth/Login';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
 import './App.css';
@@ -24,6 +25,7 @@ const App = ({
         <Employee path="jobs" />
         <Employer path="company" />
         <Employee path="hiring" />
+        <LoginPage path="google" />
       </Router>
       <Footer />
     </div>

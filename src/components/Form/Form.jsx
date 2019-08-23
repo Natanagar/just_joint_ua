@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form';
+import firebase from 'firebase/app';
 import {
   withFirebase, firebaseConnect, isLoaded, isEmpty,
+  firestoreConnect,
 } from 'react-redux-firebase';
+
 
 // we are importing some of the beautiful semantic UI react components
 import {
@@ -14,7 +17,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 
-let FormForJobs = ({ firebase, handleSubmit }) => {
+const FormForJobs = ({ firebase, handleSubmit }) => {
   console.log(handleSubmit);
   const newJob = {
     position: 'Javascript middle developer',
@@ -56,14 +59,36 @@ let FormForJobs = ({ firebase, handleSubmit }) => {
     </form>
   );
 };
-const mapStateToProps = (state) => {
+/* const mapStateToProps = (state) => {
   console.log(state);
   return {};
 };
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+});
+FormForJobs = withFirebase(FormForJobs);
 FormForJobs = reduxForm({
   // a unique name for the form
   form: 'formForEmployer',
-})(FormForJobs);
-FormForJobs = withFirebase(FormForJobs);
-export default connect(mapStateToProps, mapDispatchToProps)(FormForJobs);
+})(FormForJobs); */
+
+export default compose(
+  withFirebase,
+  connect(({ firestore, firebase }) => ({
+    jobs: firestore.data.jobs,
+  })), firestoreConnect(props => [
+    {
+      collection: 'jobs_ua',
+      // Part where I'm thinking I'm mixed up
+      jobs: firebase.data.jobs,
+    },
+    {
+      collection: 'new job',
+      where: [
+        'company',
+        '==',
+        //  ?  something like profile.company
+      ],
+    },
+  ] ),
+)(FormForJobs);
