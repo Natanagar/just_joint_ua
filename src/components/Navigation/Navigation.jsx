@@ -35,7 +35,7 @@ export const Navigation = () => (
               </li>
 
             </Link>
-            <Link to="/google">
+            <Link to="/sighup">
               <li>
                 <a href="#registration">Registration</a>
               </li>

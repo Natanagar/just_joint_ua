@@ -1,12 +1,4 @@
 // key and others from Firebase
-export const firebaseData = {
-  apiKey: 'AIzaSyAjZYM8VG6ID_3C0OzmfLw_pCMkgAChXuQ',
-  authDomain: 'juniorsjobs-48edf.firebaseio.com',
-  databaseURL: 'https://juniorsjobs-48edf.firebaseio.com',
-  projectId: 'juniorsjobs-48edf',
-  storageBucket: 'juniorsjobs-48edf.appspot.com',
-  messageInSenderId: '1093321087128',
-};
 
 export const jobs = [
   {
@@ -20,8 +12,6 @@ export const jobs = [
     company: 'Antbox',
     address: 'ul. Nauki,1 Kiev',
     data: '20.09.2019',
-
-
   },
   {
     position: 'Backend developer',
@@ -34,8 +24,6 @@ export const jobs = [
     company: 'NixSolution',
     address: 'ul. Karazina, 15',
     data: '20.09.2019',
-
-
   },
   {
     position: 'Devops',
@@ -48,8 +36,29 @@ export const jobs = [
     company: 'SoftServe',
     address: 'ul. Warszawska, 232',
     data: '20.09.2019',
-
-
   },
-
 ];
+// facebook
+const facebook = {
+  ID: '1548782191925374',
+};
+
+/* window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk')); */

@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { firestoreReducer } from 'redux-firestore';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
+import localStorage from 'redux-persist/lib/storage';
+import { persistedReducer } from '../store/index';
 import {
   MAP_DRAGGBLE_MARKER,
   MAP_LOAD_SAGA_START,
@@ -11,7 +14,6 @@ import {
   MAP_REMOVE_MARKER_SAGA,
 } from '../actions/index';
 import { Position } from '../components/utils/index';
-
 
 const initialState = Object.freeze({
   marker: [],
@@ -42,7 +44,6 @@ const initialState = Object.freeze({
     traffic: 'disabled',
   },
 });
-
 
 const MapReducer = (state = initialState, action) => {
   switch (action.type) {
