@@ -1,8 +1,10 @@
 import React from 'react';
+// facebook login
 import FacebookLogin from 'react-facebook-login';
 // Material-UI
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-
+// github login
+import GitHubLogin from 'github-login';
 import Hidden from '@material-ui/core/Hidden';
 import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -19,9 +21,16 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { FaGithub } from './react-icons/fa/index';
 
 const responseFacebook = (response) => {
   console.log(response);
+};
+const onSuccess = () => {
+  console.log('Success');
+};
+const onFailure = () => {
+  console.log('Failure');
 };
 
 const useStyles = makeStyles(theme => ({
@@ -70,18 +79,27 @@ export const SignUp = () => {
             <Grid item xs={12} sm={6}>
               <Button variant="contained" color="primary">
                 <FacebookLogin
-                appId="1548782191925374"
-                autoLoad
-                fields="name,email,picture"
-                callback={responseFacebook}
+                  appId="1548782191925374"
+                  autoLoad
+                  fields="name,email,picture"
+                  callback={responseFacebook}
 
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"
-                onClick={componentClicked}
-
-              />
+                  cssClass="my-facebook-button-class"
+                  icon="fa-facebook"
+                  onClick={componentClicked}
+                />
               </Button>
-
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Button variant="contained" color="primary">
+                <GitHubLogin
+                  clientId="61dca577092112ba03eb"
+                  onSuccess={onSuccess}
+                  onFailure={onFailure}
+                  icon={<FaGithub />}
+                />
+,
+              </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
