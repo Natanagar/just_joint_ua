@@ -7,6 +7,7 @@ export const theme = createMuiTheme({
     primary: grey,
     secondary: {
       main: indigo[500],
+      light: grey[200],
     },
   },
   status: {
@@ -42,4 +43,3 @@ export const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-console.log(useStyles);

@@ -12,22 +12,16 @@ import GitHubLogin from 'github-login';
 import GoogleLogin from 'react-google-login';
 
 
-import Hidden from '@material-ui/core/Hidden';
-import TextField from '@material-ui/core/TextField';
-import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { FormControlLabel } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { FaGithub } from 'react-icons/fa';
 import { TiSocialFacebookCircular } from 'react-icons/ti';
+import { Registration } from './Registration';
 import { theme, useStyles } from './SighInTheme';
 
 console.log(typeof useStyles);
@@ -88,18 +82,16 @@ export const SignIn = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FaGithub />
                 <GoogleLogin
                   clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                  render={renderProps => (
-                    <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
-                  )}
-                  buttonText="Login"
+                  buttonText="Login with Google"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy="single_host_origin"
                 />
-,
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Registration />
               </Grid>
             </Grid>
           </form>
