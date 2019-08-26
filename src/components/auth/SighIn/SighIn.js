@@ -7,6 +7,11 @@ import Box from '@material-ui/core/Box';
 
 // github login
 import GitHubLogin from 'github-login';
+
+// google login
+import GoogleLogin from 'react-google-login';
+
+
 import Hidden from '@material-ui/core/Hidden';
 import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -35,6 +40,10 @@ const onSuccess = () => {
 };
 const onFailure = () => {
   console.log('Failure');
+};
+
+const responseGoogle = (response) => {
+  console.log(response);
 };
 export const SignIn = () => {
   const classes = useStyles();
@@ -77,6 +86,20 @@ export const SignIn = () => {
                   onFailure={onFailure}
                   color="primary "
                 />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FaGithub />
+                <GoogleLogin
+                  clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                  render={renderProps => (
+                    <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy="single_host_origin"
+                />
+,
               </Grid>
             </Grid>
           </form>
