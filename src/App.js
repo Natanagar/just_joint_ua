@@ -5,30 +5,30 @@ import { Footer } from './components/Footer/Footer';
 import { Navigation } from './components/Navigation/Navigation';
 import { Employer } from './components/Employer/Employer';
 import { Employee } from './components/Employee/Employee';
-import LoginPage from './components/auth/Login';
-import { SignUp } from './components/auth/Sighin';
+import { SignIn } from './components/auth/SighIn/SighIn';
+import LoginPage from './components/auth/SighIn/Login';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
 import './App.css';
 
 const App = ({
- mapStart, dispatch, marker, map 
+  mapStart, dispatch, marker, map,
 }) => {
   useEffect(() => dispatch(mapStart), [dispatch, mapStart]);
   return (
-  <div className="App">
-  <Navigation />
-  <div id="map" />
+    <div className="App">
+      <Navigation />
+      <div id="map" />
 
-  <Router>
-  <Employee path="jobs" />
-  <Employer path="company" />
-  <Employee path="hiring" />
-  <LoginPage path="google" />
-  <SignUp path="sighup" />
-			</Router>
-  <Footer />
-		</div>
+      <Router>
+        <Employee path="jobs" />
+        <Employer path="company" />
+        <Employee path="hiring" />
+        <LoginPage path="google" />
+        <SignIn path="sighup" />
+      </Router>
+      <Footer />
+    </div>
   );
 };
 

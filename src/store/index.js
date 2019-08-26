@@ -2,9 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reduxFirestore, firestoreReducer } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-import {
-  persistStore, persistReducer, createTransform,
-} from 'redux-persist';
+import { persistStore, persistReducer, createTransform } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -20,7 +18,6 @@ import rootSaga from '../redux-sagas/MapSaga';
 import { getCircularReplacer } from '../components/utils/index';
 
 const myTransform = createTransform(
-
   // transform state on its way to being serialized and persisted.
   (inboundState, key) => JSON.stringify(inboundState, getCircularReplacer()),
   (outboundState, key) => JSON.parce(outboundState, getCircularReplacer()),
@@ -34,10 +31,8 @@ const firestoreConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-
 };
 console.log(firestoreConfig);
-
 
 // react-redux-firebase config
 export const rrfConfig = {
@@ -51,7 +46,6 @@ export const rrfConfig = {
 firebase.initializeApp(firestoreConfig);
 // Initialize Cloud Firestore through Firebase
 firebase.firestore();
-
 
 // Add reactReduxFirebase enhancer when making store creator
 const createStoreWithFirebase = compose(
@@ -75,15 +69,14 @@ const configureStore = () => {
   // Note: passing middleware as the last argument to createStore requires redux@>=3.1.0
   const sagaMiddleware = createSagaMiddleware();
   return {
-    ...createStoreWithFirebase(persistedReducer,
+    ...createStoreWithFirebase(
+      persistedReducer,
       composeWithDevTools(
-        compose(
-          reactReduxFirebase(firebase, persistConfig),
-          applyMiddleware(routerMiddleware, thunk, logger, sagaMiddleware),
-        ),
-      )),
+        reactReduxFirebase(firebase, persistConfig),
+        applyMiddleware(routerMiddleware, thunk, logger, sagaMiddleware),
+      ),
+    ),
     runSaga: sagaMiddleware.run,
-
   };
 };
 const store = configureStore();
