@@ -65,16 +65,14 @@ const FormForJobs = ({ firebase, handleSubmit }) => {
 };
 const mapDispatchToProps = dispatch => ({
   dispatch,
-});*/
-/* FormForJobs = withFirebase(FormForJobs);
+});
+FormForJobs = withFirebase(FormForJobs);
 FormForJobs = reduxForm({
   // a unique name for the form
   form: 'formForEmployer',
 })(FormForJobs); */
 
-export default connect()(FormForJobs);
-
-/* compose(
+export default compose(
   withFirebase,
   connect(({ firestore, firebase }) => ({
 
@@ -96,4 +94,4 @@ export default connect()(FormForJobs);
       ],
     },
   ]),
-)(FormForJobs); */
+)(FormForJobs);
