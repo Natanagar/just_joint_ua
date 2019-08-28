@@ -13,7 +13,7 @@ import 'firebase/firestore';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createReduxHistoryContext, reachify } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
-import rootReducer from '../reducers/MapReducer';
+import rootReducer from '../reducers/rootReducer';
 import rootSaga from '../redux-sagas/MapSaga';
 import { getCircularReplacer } from '../components/utils/index';
 

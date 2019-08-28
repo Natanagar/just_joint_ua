@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 // facebook login
 import FacebookLogin from 'react-facebook-login';
 // Material-UI
@@ -21,10 +22,9 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { FaGithub } from 'react-icons/fa';
 import { TiSocialFacebookCircular } from 'react-icons/ti';
+import { SignInGithub } from '../../../actions/authAction';
 import { Registration } from './Registration';
 import { theme, useStyles } from './SighInTheme';
-
-console.log(typeof useStyles);
 
 const responseFacebook = (response) => {
   console.log(response);
@@ -39,7 +39,7 @@ const onFailure = () => {
 const responseGoogle = (response) => {
   console.log(response);
 };
-export const SignIn = () => {
+export const SignIn = ({ dispatch }) => {
   const classes = useStyles();
   console.log(classes);
   const componentClicked = () => {
@@ -78,6 +78,7 @@ export const SignIn = () => {
                   clientId="61dca577092112ba03eb"
                   onSuccess={onSuccess}
                   onFailure={onFailure}
+                  onClick={() => dispatch(SignInGithub)}
                   color="primary "
                 />
               </Grid>
@@ -100,3 +101,12 @@ export const SignIn = () => {
     </ThemeProvider>
   );
 };
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {};
+};
+
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+});
+export default connect()(SignIn);

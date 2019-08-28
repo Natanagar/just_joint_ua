@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { connect } from 'react-redux';
 import logo from './logo.png';
 
 
-export const Navigation = () => (
+const Navigation = ({ dispatch }) => (
   <>
     <div className="parent">
       <div className="navbar">
@@ -46,3 +47,12 @@ export const Navigation = () => (
     </div>
   </>
 );
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {};
+};
+
+const mapDispatchToProps = dispatch => ({
+  dispatch,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

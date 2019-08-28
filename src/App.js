@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Router } from '@reach/router';
 import { Footer } from './components/Footer/Footer';
-import { Navigation } from './components/Navigation/Navigation';
+import Navigation from './components/Navigation/Navigation';
 import { Employer } from './components/Employer/Employer';
 import { Employee } from './components/Employee/Employee';
 import { SignIn } from './components/auth/SighIn/SighIn';

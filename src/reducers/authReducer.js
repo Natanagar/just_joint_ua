@@ -3,10 +3,10 @@ import { AUTH_GITHUB_SAGA_START, AUTH_GITHUB_SAGA_SUCCESS, AUTH_GITHUB_SAGA_ERRO
 const initialState = Object.freeze({
   authIsStarting: false,
   token: null,
-  error: null,
+  authError: null,
 });
 
-const authReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_GITHUB_SAGA_START:
       return {
@@ -14,16 +14,19 @@ const authReducer = (state = initialState, action) => {
         authIsStarting: true,
       };
     case AUTH_GITHUB_SAGA_SUCCESS:
+      console.log('Auth successful');
       return {
         ...state,
         authIsStarting: false,
+        authError: null,
         token: action.payload.token,
       };
     case AUTH_GITHUB_SAGA_ERROR:
+      console.log('authentification failed');
       return {
         ...state,
         authIsStarting: false,
-        error: action.error,
+        authError: 'Authentification failed',
       };
 
     default:

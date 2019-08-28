@@ -75,7 +75,10 @@ FormForJobs = reduxForm({
 export default compose(
   withFirebase,
   connect(({ firestore, firebase }) => ({
+
+
     jobs: firestore.data.jobs,
+
   })), firestoreConnect(props => [
     {
       collection: 'jobs_ua',
@@ -90,5 +93,5 @@ export default compose(
         //  ?  something like profile.company
       ],
     },
-  ] ),
+  ]),
 )(FormForJobs);
