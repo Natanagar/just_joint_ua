@@ -4,17 +4,16 @@ import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form';
 import firebase from 'firebase/app';
 import {
-  withFirebase, firebaseConnect, isLoaded, isEmpty,
+  withFirebase,
+  firebaseConnect,
+  isLoaded,
+  isEmpty,
   firestoreConnect,
 } from 'react-redux-firebase';
 
-
 // we are importing some of the beautiful semantic UI react components
 import {
-  Segment,
-  Search,
-  Divider,
-  Button,
+ Segment, Search, Divider, Button 
 } from 'semantic-ui-react';
 
 const FormForJobs = ({ firebase, handleSubmit }) => {
@@ -30,8 +29,6 @@ const FormForJobs = ({ firebase, handleSubmit }) => {
     company: 'Mohi.to',
     address: 'ul. Valentinoskaya,18 Kharkov',
     data: '22.09.2019',
-
-
   };
   const submitForm = () => firebase.push('new job in Kharkov', newJob);
   console.log(submitForm);
@@ -49,12 +46,11 @@ const FormForJobs = ({ firebase, handleSubmit }) => {
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email" />
       </div>
-      <Button
-        onClick={submitForm}
-        type="submit"
-      >
-      Submit
-
+      <Button onClick={submitForm} type="submit">
+        Submit
+      </Button>
+      <Button type="button" disabled={pristine || submitting} onClick={reset}>
+        Clear Values
       </Button>
     </form>
   );
@@ -65,7 +61,7 @@ const FormForJobs = ({ firebase, handleSubmit }) => {
 };
 const mapDispatchToProps = dispatch => ({
   dispatch,
-});*/
+}); */
 /* FormForJobs = withFirebase(FormForJobs);
 FormForJobs = reduxForm({
   // a unique name for the form
