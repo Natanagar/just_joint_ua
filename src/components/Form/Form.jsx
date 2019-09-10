@@ -17,7 +17,7 @@ import {
 } from 'semantic-ui-react';
 
 const FormForJobs = ({ firebase, handleSubmit }) => {
-  console.log(handleSubmit);
+  console.log(firebase);
   const newJob = {
     position: 'Javascript middle developer',
     city: 'Kharkiv',
@@ -49,25 +49,9 @@ const FormForJobs = ({ firebase, handleSubmit }) => {
       <Button onClick={submitForm} type="submit">
         Submit
       </Button>
-      <Button type="button" disabled={pristine || submitting} onClick={reset}>
-        Clear Values
-      </Button>
     </form>
   );
 };
-/* const mapStateToProps = (state) => {
-  console.log(state);
-  return {};
-};
-const mapDispatchToProps = dispatch => ({
-  dispatch,
-}); */
-/* FormForJobs = withFirebase(FormForJobs);
-FormForJobs = reduxForm({
-  // a unique name for the form
-  form: 'formForEmployer',
-})(FormForJobs); */
-
 export default connect()(FormForJobs);
 
 /* compose(
