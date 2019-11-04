@@ -5,8 +5,8 @@ import { Footer } from './components/layout/Footer/Footer';
 import Navigation from './components/layout/Navigation/Navigation';
 import { Employer } from './components/layout/Employer/Employer';
 import { Employee } from './components/layout/Employee/Employee';
-import { SignIn } from './components/auth/SighIn/SighIn';
-import LoginPage from './components/auth/SighIn/Login';
+import SignIn from './components/auth/SighIn/Login/SighIn';
+import LoginPage from './components/auth/SighIn/Registration/Login';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';
 import './App.css';
@@ -24,8 +24,8 @@ const App = ({
         <Employee path="jobs" />
         <Employer path="company" />
         <Employee path="hiring" />
-        <LoginPage path="google" />
-        <SignIn path="sighup" />
+        { /* <LoginPage path="google" /> */}
+        <SignIn path="signin" />
       </Router>
       <Footer />
     </div>

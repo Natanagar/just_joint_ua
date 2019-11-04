@@ -17,19 +17,19 @@ export const theme = createMuiTheme({
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
+    flexGrow: 1,
+  },
+  paper: {
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
