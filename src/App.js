@@ -5,7 +5,7 @@ import { Footer } from './components/layout/Footer/Footer';
 import Navigation from './components/layout/Navigation/Navigation';
 import { Employer } from './components/layout/Employer/Employer';
 import { Employee } from './components/layout/Employee/Employee';
-import SignIn from './components/auth/SignIn/Login/SighIn';
+import SignIn from './components/auth/SignIn/Login/SignIn';
 import LoginPage from './components/auth/SignIn/Registration/Login';
 import { mapStartLoading } from './actions/index';
 import { mapParams } from './redux-sagas/MapSaga';

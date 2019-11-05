@@ -6,8 +6,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import Paper from '@material-ui/core/Paper';
 
 import Grid from '@material-ui/core/Grid';
-import { theme, useStyles } from './SighInTheme';
-
+import { theme, useStyles } from './SignInTheme';
 
 const SignIn = () => {
   const classes = useStyles();
@@ -18,7 +17,6 @@ const SignIn = () => {
       <div className={classes.root}>
         <Grid
           container
-          container
           direction="row-reverse"
           justify="center"
           alignItems="baseline"
@@ -26,9 +24,7 @@ const SignIn = () => {
         >
           <Grid item xs={4}>
             <Link to="/login">
-              <Paper className={classes.paper}>
-                Login
-              </Paper>
+              <Paper className={classes.paper}>Login</Paper>
             </Link>
           </Grid>
           <Grid item xs={4}>
@@ -41,10 +37,10 @@ const SignIn = () => {
     </ThemeProvider>
   );
 };
-const mapStateToProps = (state) => {
-  console.log(state);
-  return ({});
-};
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = dispatch => (dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+const mapDispatchToProps = dispatch => ({ dispatch });
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SignIn);
