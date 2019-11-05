@@ -23,16 +23,22 @@ export const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    width: '50vw',
+    width: '60vw',
   },
 
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
+    height: '70px',
   },
   label: {
     fontFamily: 'Open Sans',
     fontSize: '16',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
   },
 
 }));

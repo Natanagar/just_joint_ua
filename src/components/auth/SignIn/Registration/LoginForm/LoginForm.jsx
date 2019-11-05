@@ -7,6 +7,7 @@ import {
   FormControl,
   InputLabel,
   Input,
+  TextField,
   FormHelperText,
   Typography,
 } from '@material-ui/core';
@@ -26,18 +27,26 @@ const LoginForm = ({ dispatch }) => {
       spacing={3}
     >
       <Grid item sm={6}>
-        <Paper className={classes.paper}>
-          <FormControl className={classes.form}>
-            <InputLabel htmlFor="my-input">Email address</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" />
-            <FormHelperText id="my-helper-text">
-              We'll never share your email.
-            </FormHelperText>
-          </FormControl>
-        </Paper>
+        <FormControl className={classes.form}>
+          <TextField
+            required
+            id="standard-required"
+            label="Required"
+            defaultValue="Email"
+            className={classes.textField}
+            margin="normal"
+          />
+        </FormControl>
       </Grid>
       <Grid item sm={6}>
-        <Paper className={classes.paper}>Password</Paper>
+        <TextField
+          required
+          id="standard-required"
+          label="Required"
+          defaultValue="Password"
+          className={classes.textField}
+          margin="normal"
+        />
       </Grid>
       <Grid item sm={6}>
         <Paper className={classes.paper}>Buttons Social Media</Paper>
