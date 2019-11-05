@@ -17,28 +17,33 @@ export const theme = createMuiTheme({
 });
 
 export const useStyles = makeStyles(theme => ({
-
+  root: {
+    margin: theme.spacing(3),
+  },
   paper: {
     margin: theme.spacing(1),
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    width: '60vw',
+    height: '50px',
+    width: '400px',
   },
-
+  button: {
+    margin: theme.spacing(2),
+    fontWeight: 800,
+    fontSize: 14,
+  },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-    height: '70px',
+    marginTop: theme.spacing(3),
   },
   label: {
     fontFamily: 'Open Sans',
-    fontSize: '16',
+    fontSize: '16px',
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: '400px',
   },
 
 }));

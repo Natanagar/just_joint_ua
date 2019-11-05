@@ -20,6 +20,7 @@ const App = ({
       <Navigation />
       <div id="map" />
 
+      { /* <div id="map" /> */}
       <Router>
         <Employee path="jobs" />
         <Employer path="company" />
