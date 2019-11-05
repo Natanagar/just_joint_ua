@@ -43,10 +43,8 @@ const SignIn = () => {
 };
 const mapStateToProps = (state) => {
   console.log(state);
-  return {};
+  return ({});
 };
 
-const mapDispatchToProps = dispatch => ({
-  dispatch,
-});
+const mapDispatchToProps = dispatch => (dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
