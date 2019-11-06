@@ -28,8 +28,8 @@ const SignIn = () => {
             </Link>
           </Grid>
           <Grid item xs={4}>
-            <Link to="/form">
-              <Paper className={classes.paper}>Sigh in</Paper>
+            <Link to="/registration">
+              <Paper className={classes.paper}>Sigh Up</Paper>
             </Link>
           </Grid>
         </Grid>
@@ -37,7 +37,7 @@ const SignIn = () => {
     </ThemeProvider>
   );
 };
-const mapStateToProps = (state) => ({});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({ dispatch });
 export default connect(

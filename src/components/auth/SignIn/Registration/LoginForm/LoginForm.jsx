@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from '@reach/router';
 import { Field, reduxForm } from 'redux-form';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GoogleLogin from 'react-google-login';
@@ -16,14 +17,19 @@ import { useStyles } from './LoginFormTheme';
 
 const LoginForm = (props) => {
   // initial values
-  const [values, changeValues] = useState(null);
+  const [values, changeValues] = useState({});
   // create state from values input
   const handleChange = (event) => {
-    changeValues({ [event.target.id]: event.currentTarget.value });
+    event.persist();
+    changeValues(values => ({
+      ...values,
+      [event.target.id]: event.target.value,
+    }));
   };
   console.log(values);
   const handleSubmit = (event) => {
-    console.log(event);
+    event.preventDefault();
+    console.log(values);
   };
   // created styling
   const classes = useStyles();
@@ -72,9 +78,15 @@ const LoginForm = (props) => {
         >
           Login
         </Button>
-        <Button variant="contained" color="primary" className={classes.button}>
-          Sign up
-        </Button>
+        <Link to="/registration">
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            Sign up
+          </Button>
+        </Link>
       </Grid>
       <MediaButtons />
     </Grid>

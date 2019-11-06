@@ -1,6 +1,7 @@
 import indigo from '@material-ui/core/colors/indigo';
 import grey from '@material-ui/core/colors/grey';
 import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { spawnSync } from 'child_process';
 
 export const theme = createMuiTheme({
   palette: {
@@ -17,29 +18,32 @@ export const theme = createMuiTheme({
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    margin: theme.spacing(3),
   },
   paper: {
-    margin: theme.spacing(2),
-    padding: theme.spacing(2),
+    margin: theme.spacing(1),
+    padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    height: '50px',
+    width: '400px',
   },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+  button: {
+    margin: theme.spacing(2),
+    fontWeight: 800,
+    fontSize: 14,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+  label: {
+    fontFamily: 'Open Sans',
+    fontSize: '16px',
   },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: '400px',
+  },
+
 }));
