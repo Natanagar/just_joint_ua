@@ -1,6 +1,12 @@
 import { firebase } from 'react-redux-firebase';
 import { getStoredState } from 'redux-persist/es/integration/getStoredStateMigrateV4';
 import store from '../store/index';
+import { makeActionCreator } from './utils/index';
+// authentification firebase/firestore
+export const AUTH_FIRESTORE_SAGA_START = 'AUTH_FIRESTORE_SAGA_START';
+export const AUTH_FIRESTORE_SAGA_SUCCESS = 'AUTH_FIRESTORE_SAGA_SUCCESS';
+export const AUTH_FIRESTORE_SAGA_ERROR = 'AUTH_FIRESTORE_SAGA_ERROR';
+
 // authentification github OAuth
 export const AUTH_GITHUB_SAGA_START = 'AUTH_GITHUB_SAGA_START';
 export const AUTH_GITHUB_SAGA_SUCCESS = 'AUTH_GITHUB_SAGA_SUCCESS';
@@ -46,3 +52,7 @@ export const SignInGithub = (credential, dispatch) => {
       .catch(error => dispatch({ type: 'AUTH_GITHUB_SAGA_ERROR', error }));
   };
 };
+
+export const loginStart = makeActionCreator(AUTH_FIRESTORE_SAGA_START, 'isFired');
+export const loginSuccess = makeActionCreator(AUTH_FIRESTORE_SAGA_SUCCESS, 'user');
+export const loginFailure = makeActionCreator(AUTH_FIRESTORE_SAGA_ERROR, 'error');

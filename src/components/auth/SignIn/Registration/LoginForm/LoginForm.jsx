@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from '@reach/router';
-import { Field, reduxForm } from 'redux-form';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import GoogleLogin from 'react-google-login';
 
 // third libraries
 import Grid from '@material-ui/core/Grid';
@@ -10,12 +8,13 @@ import Paper from '@material-ui/core/Paper';
 import {
  Button, FormControl, TextField, Typography 
 } from '@material-ui/core';
+import { loginStart } from '../../../../../actions/authAction';
 
 // local components
 import MediaButtons from '../MediaBlock/index';
 import { useStyles } from './LoginFormTheme';
 
-const LoginForm = (props) => {
+const LoginForm = ({ dispatch, firestoreStart }) => {
   // initial values
   const [values, changeValues] = useState({});
   // create state from values input
@@ -27,9 +26,9 @@ const LoginForm = (props) => {
     }));
   };
   console.log(values);
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, values) => {
     event.preventDefault();
-    console.log(values);
+    firestoreStart(values);
   };
   // created styling
   const classes = useStyles();
@@ -92,4 +91,12 @@ const LoginForm = (props) => {
     </Grid>
   );
 };
-export default LoginForm;
+const mapStateToProps = state => ({});
+const mapDispatchToProps = ({ dispatch }) => ({
+  firestoreStart: () => dispatch(loginStart()),
+  dispatch,
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoginForm);

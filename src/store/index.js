@@ -43,7 +43,7 @@ export const rrfConfig = {
 };
 
 // Initialize firebase instance
-firebase.initializeApp(firestoreConfig);
+export const firebaseReduxInitialize = firebase.initializeApp(firestoreConfig);
 // Initialize Cloud Firestore through Firebase
 firebase.firestore();
 

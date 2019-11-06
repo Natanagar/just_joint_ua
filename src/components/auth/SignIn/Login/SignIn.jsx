@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 
 import Grid from '@material-ui/core/Grid';
 import { theme, useStyles } from './SignInTheme';
+import { Mail, Keyboard } from '../../../layout/Icon';
 
 const SignIn = () => {
   const classes = useStyles();
@@ -24,12 +25,18 @@ const SignIn = () => {
         >
           <Grid item xs={4}>
             <Link to="/login">
-              <Paper className={classes.paper}>Login</Paper>
+              <Paper className={classes.paper}>
+                <Mail />
+                <div>Login</div>
+              </Paper>
             </Link>
           </Grid>
           <Grid item xs={4}>
             <Link to="/registration">
-              <Paper className={classes.paper}>Sigh Up</Paper>
+              <Paper className={classes.paper}>
+                <Keyboard />
+                <div>Sigh Up</div>
+              </Paper>
             </Link>
           </Grid>
         </Grid>

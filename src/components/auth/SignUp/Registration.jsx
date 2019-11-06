@@ -35,7 +35,7 @@ const Registration = (props) => {
       direction='column'
       justify='flex-start'
       alignItems='center'
-      spacing={3}
+      spacing={2}
       className={classes.root}>
       <Grid item sm={6}>
         <FormControl className={classes.form}>
@@ -58,6 +58,8 @@ const Registration = (props) => {
             id='password'
             label='Required'
             defaultValue='Password'
+            type='password'
+            autoComplete='current-password'
             className={classes.textField}
             margin='normal'
             onChange={handleChange}
@@ -81,7 +83,7 @@ const Registration = (props) => {
                 required
                 id='second-name'
                 label='Required'
-                defaultValue='Second Names'
+                defaultValue='Second Name'
                 className={classes.textField}
                 margin='normal'
                 onChange={handleChange}
