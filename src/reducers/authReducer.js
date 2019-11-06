@@ -52,7 +52,7 @@ export const authReducer = (state = initialState, action) => {
         user: action.payload.user,
       };
     case AUTH_FIRESTORE_SAGA_ERROR:
-      console.log('FIRESTORE FAIILED');
+      console.log(action.error);
       return {
         ...state,
         isFired: false,
