@@ -1,7 +1,7 @@
 import React from 'react';
 import L from 'leaflet';
 import {
-  put, takeEvery, all, call, delay,
+  put, takeEvery, all, call, delay, fork,
 } from 'redux-saga/effects';
 import { Position, Apikey } from '../components/utils/index';
 import HereTileLayers from '../components/layout/Map/hereTileLayers';
@@ -14,7 +14,7 @@ import {
   mapCreateMarkerSaga,
   mapRemoveMarkerSaga,
 } from '../actions';
-import loginSaga from './AuthSaga';
+import { loginSaga, createUser } from './AuthSaga';
 
 // using the reduced.day map styles, have a look at the imported hereTileLayers for more
 const hereReducedDay = HereTileLayers.here({
@@ -103,18 +103,6 @@ function* MapSaga() {
     .openPopup();
   // and for the sake of advertising your company, you may add a logo to the map
   // yield delay(3000);
-  const getCircularReplacer = () => {
-    const seen = new WeakSet();
-    return (key, value) => {
-      if (typeof value === 'object' && value !== null) {
-        if (seen.has(value)) {
-          return;
-        }
-        seen.add(value);
-      }
-      return value;
-    };
-  };
   try {
     yield put({
       type: 'MAP_LOAD_SAGA_SUCCESS',
@@ -144,9 +132,18 @@ function* MapSaga() {
 function* watchInitMap() {
   yield all([
     takeEvery('INIT_MAP', MapSaga),
+  ]);
+}
+function* watchInitFirestore() {
+  yield all([
     takeEvery('AUTH_FIRESTORE_SAGA_START', loginSaga),
+    takeEvery('AUTH_FIRESTORE_SAGA_CREATE_START', createUser),
   ]);
 }
 export default function* rootSaga() {
-  yield all([MapSaga(), watchInitMap()]);
+  yield all([
+    MapSaga(),
+    watchInitMap(),
+    watchInitFirestore(),
+  ]);
 }

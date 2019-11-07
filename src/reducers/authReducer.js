@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import {
   AUTH_GITHUB_SAGA_START, AUTH_GITHUB_SAGA_SUCCESS, AUTH_GITHUB_SAGA_ERROR, AUTH_FIRESTORE_SAGA_START, AUTH_FIRESTORE_SAGA_SUCCESS, AUTH_FIRESTORE_SAGA_ERROR,
 } from '../actions/authAction.js';
@@ -5,13 +6,9 @@ import {
 
 const initialState = Object.freeze({
   authIsStarting: false,
-  token: null,
   authError: null,
   isFired: false,
-  user: {
-    email: '',
-    password: '',
-  },
+  user: null,
 });
 
 // eslint-disable-next-line import/prefer-default-export
@@ -38,13 +35,13 @@ export const authReducer = (state = initialState, action) => {
         authError: 'Authentification failed',
       };
     case AUTH_FIRESTORE_SAGA_START:
-      console.log('FIRESTORE START');
+      console.log(action);
       return {
         ...state,
         isFired: true,
       };
     case AUTH_FIRESTORE_SAGA_SUCCESS:
-      console.log('Auth FIRESTORE  successful');
+      console.log(action);
       return {
         ...state,
         isFired: false,
@@ -52,11 +49,11 @@ export const authReducer = (state = initialState, action) => {
         user: action.payload.user,
       };
     case AUTH_FIRESTORE_SAGA_ERROR:
-      console.log(action.error);
+      console.log(action, state);
       return {
         ...state,
         isFired: false,
-        error: action.payload.error,
+        error: action.error,
       };
 
     default:

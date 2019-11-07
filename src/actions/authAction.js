@@ -7,6 +7,10 @@ export const AUTH_FIRESTORE_SAGA_START = 'AUTH_FIRESTORE_SAGA_START';
 export const AUTH_FIRESTORE_SAGA_SUCCESS = 'AUTH_FIRESTORE_SAGA_SUCCESS';
 export const AUTH_FIRESTORE_SAGA_ERROR = 'AUTH_FIRESTORE_SAGA_ERROR';
 
+export const AUTH_FIRESTORE_SAGA_CREATE_START = 'AUTH_FIRESTORE_SAGA_CREATE_START';
+export const AUTH_FIRESTORE_SAGA_CREATE_SUCCESS = 'AUTH_FIRESTORE_SAGA_CREATE_SUCCESS';
+export const AUTH_FIRESTORE_SAGA_CREATE_ERROR = 'AUTH_FIRESTORE_SAGA_CREATE_ERROR';
+
 // authentification github OAuth
 export const AUTH_GITHUB_SAGA_START = 'AUTH_GITHUB_SAGA_START';
 export const AUTH_GITHUB_SAGA_SUCCESS = 'AUTH_GITHUB_SAGA_SUCCESS';
@@ -54,5 +58,23 @@ export const SignInGithub = (credential, dispatch) => {
 };
 
 export const loginStart = makeActionCreator(AUTH_FIRESTORE_SAGA_START, 'isFired');
-export const loginSuccess = makeActionCreator(AUTH_FIRESTORE_SAGA_SUCCESS, 'user');
+export const loginSuccess = user => ({
+  type: 'AUTH_FIRESTORE_SAGA_SUCCESS',
+  user: {
+    email: user.emal,
+    password: user.password,
+  },
+});
 export const loginFailure = makeActionCreator(AUTH_FIRESTORE_SAGA_ERROR, 'error');
+
+export const createStart = makeActionCreator(AUTH_FIRESTORE_SAGA_CREATE_START, 'isFired');
+export const createSuccess = user => ({
+  type: 'AUTH_FIRESTORE_SAGA_CREATE_SUCCESS',
+  user: {
+    email: user.emal,
+    password: user.password,
+    first: user.firstName,
+    last: user.lastName,
+  },
+});
+export const createFailure = makeActionCreator(AUTH_FIRESTORE_SAGA_CREATE_ERROR, 'error');

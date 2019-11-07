@@ -1,51 +1,59 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 // third libraries
-import Grid from '@material-ui/core/Grid'
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add'
-import DeleteIcon from '@material-ui/icons/Delete'
-import Paper from '@material-ui/core/Paper'
-import { Button, FormControl, TextField, Typography } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Paper from '@material-ui/core/Paper';
+import {
+ Button, FormControl, TextField, Typography 
+} from '@material-ui/core';
+import { createUserData } from '../../../actions/firestoreAction';
+import { createStart } from '../../../actions/authAction';
 
 // local components
-import { useStyles } from './RegistrationTheme'
+import { useStyles } from './RegistrationTheme';
 
-const Registration = (props) => {
+const Registration = ({ dispatch, createUser, createUserFirestore }) => {
   // initial values
-  const [values, changeValues] = useState({})
+  const [values, changeValues] = useState({});
   // create state from values input
   const handleChange = (event) => {
-    event.persist()
-    changeValues((values) => ({
+    event.persist();
+    changeValues(values => ({
       ...values,
-      [event.target.id]: event.target.value
-    }))
-  }
-  console.log(values)
+      [event.target.id]: event.target.value,
+    }));
+  };
+  console.log(values);
   const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(values)
-  }
+    event.preventDefault();
+    console.log(values);
+    dispatch({ type: 'USER_DATA_CREATE_STORE', values });
+    createUserFirestore(values);
+  };
   // created styling
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <Grid
       container
-      direction='column'
-      justify='flex-start'
-      alignItems='center'
+      direction="column"
+      justify="flex-start"
+      alignItems="center"
       spacing={2}
-      className={classes.root}>
+      className={classes.root}
+    >
       <Grid item sm={6}>
         <FormControl className={classes.form}>
           <TextField
             required
-            id='email'
-            label='Required'
-            defaultValue='Email'
+            id="email"
+            label="Required"
+            defaultValue="Email"
             className={classes.textField}
-            margin='normal'
+            margin="normal"
             onChange={handleChange}
           />
           <Typography> 8 characters</Typography>
@@ -55,13 +63,13 @@ const Registration = (props) => {
         <FormControl className={classes.form}>
           <TextField
             required
-            id='password'
-            label='Required'
-            defaultValue='Password'
-            type='password'
-            autoComplete='current-password'
+            id="password"
+            label="Required"
+            defaultValue="Password"
+            type="password"
+            autoComplete="current-password"
             className={classes.textField}
-            margin='normal'
+            margin="normal"
             onChange={handleChange}
           />
         </FormControl>
@@ -70,22 +78,22 @@ const Registration = (props) => {
         <FormControl className={classes.form}>
           <TextField
             required
-            id='first-name'
-            label='Required'
-            defaultValue='First Name'
+            id="first-name"
+            label="Required"
+            defaultValue="First Name"
             className={classes.textField}
-            margin='normal'
+            margin="normal"
             onChange={handleChange}
           />
           <Grid item sm={6}>
             <FormControl className={classes.form}>
               <TextField
                 required
-                id='second-name'
-                label='Required'
-                defaultValue='Second Name'
+                id="second-name"
+                label="Required"
+                defaultValue="Second Name"
                 className={classes.textField}
-                margin='normal'
+                margin="normal"
                 onChange={handleChange}
               />
             </FormControl>
@@ -94,21 +102,32 @@ const Registration = (props) => {
       </Grid>
       <Grid item sm={6}>
         <Fab
-          color='primary'
-          aria-label='add'
+          color="primary"
+          aria-label="add"
           className={classes.fab}
-          onSubmit={handleSubmit}>
+          onClick={handleSubmit}
+        >
           <AddIcon />
         </Fab>
         <Fab
-          color='default'
-          aria-label='add'
+          color="default"
+          aria-label="add"
           className={classes.fab}
-          onSubmit={handleSubmit}>
+          onSubmit={e => handleSubmit}
+        >
           <DeleteIcon />
         </Fab>
       </Grid>
     </Grid>
-  )
-}
-export default Registration
+  );
+};
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({
+  createUser: () => dispatch(createUserData()),
+  createUserFirestore: () => dispatch(createStart()),
+  dispatch,
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Registration);
