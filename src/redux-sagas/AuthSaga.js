@@ -1,5 +1,5 @@
 import {
-  take, fork, cancel, call, put, cancelled, takeEvery, all,
+  take, fork, cancel, call, put, cancelled, takeEvery, all, delay,
 } from 'redux-saga/effects';
 import firebase from 'firebase';
 import '@firebase/firestore';
@@ -23,13 +23,16 @@ export function* loginSaga(action) {
 }
 
 export function* createUser(action) {
-  yield put({ type: 'AUTH_FIRESTORE_SAGA_CREATE_START' });
   console.log(action);
+  yield delay(3000);
   try {
     const auth = firebase.auth();
+    console.log(store.getState().data.createUser.email,
+      store.getState().data.createUser.password);
     const data = yield call([auth, auth.createUserWithEmailAndPassword],
       store.getState().data.createUser.email,
       store.getState().data.createUser.password);
+
     yield put(createSuccess({ user: action.user }));
   } catch (error) {
     yield put(createFailure({ error: error.message }));
