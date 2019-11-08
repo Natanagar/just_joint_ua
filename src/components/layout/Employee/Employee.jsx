@@ -1,5 +1,5 @@
 import React from 'react';
-import { jobs } from '../Data/index';
+import { jobs } from '../../Data/index.js';
 // import { MapLeaflet } from '../Map/Map';
 
 export const Employee = () => {

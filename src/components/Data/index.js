@@ -62,3 +62,9 @@ const facebook = {
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk')); */
+// github
+/* Client ID : 61dca577092112ba03eb,
+Client Secret : bb215583a4ba8e5cbc304bf8ab46f717da87710b
+
+Authorization callback URL
+https://juniorsjobs-48edf.firebaseapp.com/__/auth/handler*/

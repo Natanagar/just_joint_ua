@@ -1,6 +1,3 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import { firestoreReducer } from 'redux-firestore';
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import localStorage from 'redux-persist/lib/storage';
 import { persistedReducer } from '../store/index';
@@ -45,7 +42,7 @@ const initialState = Object.freeze({
   },
 });
 
-const MapReducer = (state = initialState, action) => {
+export const MapReducer = (state = initialState, action) => {
   switch (action.type) {
     case MAP_DRAGGBLE_MARKER:
       return {
@@ -91,11 +88,3 @@ const MapReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-const rootReducer = combineReducers({
-  MapReducer,
-  // form reducer
-  form: formReducer,
-  firestore: firestoreReducer,
-});
-export default rootReducer;
