@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+
+// third API
 import { connect } from 'react-redux'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login'
 
+// material-ui
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import { Button, FormControl, TextField, Typography } from '@material-ui/core'
+import { Facebook } from '../../../../layout/Icon/index'
+import FacebookIcon from '@material-ui/icons/Facebook'
 
 import { facebookSuccess } from '../../../../../actions/authAction'
 
@@ -64,19 +69,28 @@ const MediaButtons = ({ setUser, dispatch }) => {
           </Grid>
 
           <Grid item>
-            <Paper>
-              {!isLoggedIn ? (
-                <FacebookLogin
-                  appId='1548782191925374' // REACT_APP_FACEBOOK_APP_ID
-                  autoLoad
-                  fields='name,email,picture'
-                  callback={responseFacebook}
-                  render={(renderProps) => <button onClick={renderProps.onClick}>Facebook</button>}
-                />
-              ) : (
-                <div>HelloWorld</div>
-              )}
-            </Paper>
+            {!isLoggedIn ? (
+              <FacebookLogin
+                appId='1548782191925374' // REACT_APP_FACEBOOK_APP_ID
+                autoLoad
+                fields='name,email,picture'
+                callback={responseFacebook}
+                render={(renderProps) => (
+                  <button сlassName={classes.button} onClick={renderProps.onClick}>
+                    <div>
+                      <Facebook style={{ width: '20px', height: '20px' }} />
+                    </div>
+                  </button>
+                )}
+              />
+            ) : (
+              <Paper>
+                <div>
+                  <FacebookIcon color='primary' />
+                  Logged with Facebook
+                </div>
+              </Paper>
+            )}
           </Grid>
           <Grid item>
             <Paper>Github</Paper>
