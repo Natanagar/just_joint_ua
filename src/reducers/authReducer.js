@@ -12,7 +12,7 @@ import {
 } from '../actions/authAction.js'
 
 const initialState = Object.freeze({
-  authIsStarting: false,
+  isLoggedIn: false,
   authError: null,
   isFired: false,
   user: null
@@ -63,22 +63,21 @@ export const authReducer = (state = initialState, action) => {
         error: action.error
       }
     case AUTH_FACEBOOK_SAGA_START:
-      console.log('Auth Facebook successful', action)
       return {
         ...state,
         isFired: true
       }
     case AUTH_FACEBOOK_SAGA_SUCCESS:
-      console.log(action.user)
       return {
         ...state,
         isFired: false,
+        isLoggedIn: true,
         user: action.user
       }
     case AUTH_FACEBOOK_SAGA_ERROR:
-      console.log(action, state)
       return {
         ...state,
+        isLoggedIn: false,
         isFired: false,
         error: action.error
       }
